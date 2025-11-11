@@ -19,7 +19,7 @@ SubProceso resultado <- Multiplicar(num1, num2)
 FinSubProceso
 
 SubProceso resultado <- Dividir(num1, num2)
-	// Comentario: Lógica para realizar la división. Incluir validación para evitar división por cero.
+	resultado <- num1 / num2;
 FinSubProceso
 
 // ------------------------------------------------------------------------------
@@ -184,6 +184,26 @@ Algoritmo CalculadoraMultifuncional
 							
 							// Imprimir del resultado
 							Escribir "El resultado de la multiplicacion entre ", numero1, " y ", numero2, " es: ", Multiplicar(numero1,numero2);
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
+						4:
+							Limpiar Pantalla; // Limpia la pantalla para un menú más limpio
+							
+							// Encabezado
+							Escribir "==========================================================";
+							Escribir "                        DIVISION                          ";
+							Escribir "==========================================================";
+							
+							// Solicitar datos
+							Escribir "Ingresa el primer numero: ";
+							Leer numero1;
+							Escribir "Ingresa el segundo numero: "
+							Leer numero2;
+							
+							// Imprimir del resultado
+							Escribir "El resultado de la division entre ", numero1, " y ", numero2, " es: ", Dividir(numero1,numero2);
 							
 							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
