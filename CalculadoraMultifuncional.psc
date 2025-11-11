@@ -11,7 +11,7 @@ SubProceso resultado <- Sumar(num1, num2)
 FinSubProceso
 
 SubProceso resultado <- Restar(num1, num2)
-	// Comentario: Lógica para realizar la resta y devolver el resultado.
+	resultado <- num1 - num2;
 FinSubProceso
 
 SubProceso resultado <- Multiplicar(num1, num2)
@@ -139,6 +139,25 @@ Algoritmo CalculadoraMultifuncional
 							
 							// Imprimir del resultado
 							Escribir "El resultado de la suma entre ", numero1, " y ", numero2, " es: ", Sumar(numero1,numero2);
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
+						2: // Resta
+							Limpiar Pantalla; // Limpia la pantalla para un menú más limpio
+							
+							// Solicitar datos
+							Escribir "Ingresa el primer numero: ";
+							Leer numero1;
+							Escribir "Ingresa el segundo numero: "
+							Leer numero2;
+							
+							// Imprimir del resultado
+							Escribir "El resultado de la resta entre ", numero1, " y ", numero2, " es: ", Restar(numero1,numero2);
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
 					FinSegun
 					
 					// Comentario: Llamar al subproceso encargado de las operaciones básicas.
