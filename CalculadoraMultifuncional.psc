@@ -208,6 +208,17 @@ Algoritmo CalculadoraMultifuncional
 							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
+						De Otro Modo:
+							Limpiar Pantalla; // Limpia la pantalla para un menú más limpio
+							
+							// Encabezado
+							Escribir "==========================================================";
+							Escribir "                          ERROR                           ";
+							Escribir "==========================================================";
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
 					FinSegun
 					
 					// Comentario: Llamar al subproceso encargado de las operaciones básicas.
