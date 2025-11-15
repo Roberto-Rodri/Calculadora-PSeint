@@ -257,7 +257,7 @@ Algoritmo CalculadoraMultifuncional
 							
 							// Encabezado
 							Escribir "==========================================================";
-							Escribir "                         MEDIA                            ";
+							Escribir "                         MEDIA c:                         ";
 							Escribir "==========================================================";
 							
 							// Solicitar datos
