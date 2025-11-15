@@ -1,10 +1,10 @@
 // ==============================================================================
 // 1. ZONA DE SUBPROCESOS
-//    AquÌ se definen todas las funciones que la calculadora puede realizar.
+//    Aqu√≠ se definen todas las funciones que la calculadora puede realizar.
 // ==============================================================================
 
 // ------------------------------------------------------------------------------
-// 1.1 M”DULO: OPERACIONES B¡SICAS
+// 1.1 M√ìDULO: OPERACIONES B√ÅSICAS
 // ------------------------------------------------------------------------------
 SubProceso resultado <- Sumar(num1, num2)
 	resultado <- num1 + num2;
@@ -23,104 +23,101 @@ SubProceso resultado <- Dividir(num1, num2)
 FinSubProceso
 
 // ------------------------------------------------------------------------------
-// 1.2 M”DULO: C¡LCULO DE ¡REAS Y PAR¡METROS GEOM…TRICOS
+// 1.2 M√ìDULO: C√ÅLCULO DE √ÅREAS Y PAR√ÅMETROS GEOM√âTRICOS
 // ------------------------------------------------------------------------------
 SubProceso area <- CalcularAreaCirculo(radio)
-	// LÛgica para calcular el ·rea de un cÌrculo (pi * r^2).
-	area <- PI * radio^2;
+	// Comentario: L√≥gica para calcular el √°rea de un c√≠rculo (pi * r^2).
 FinSubProceso
 
 SubProceso radio <- CalcularRadioCirculo(diametro)
-	// LÛgica para calcular el radio del cÌrculo (d / 2).
-	radio <- diametro / 2;
+	// Comentario: L√≥gica para calcular el radio del c√≠rculo (d / 2).
 FinSubProceso
 
 SubProceso diametro <- CalcularDiametroCirculo(radio)
-	// LÛgica para calcular el di·metro del cÌrculo (2 * r).
-	diametro <- 2 * radio;
+	// Comentario: L√≥gica para calcular el di√°metro del c√≠rculo (2 * r).
 FinSubProceso
 
 SubProceso area <- CalcularAreaCuadrado(lado)
-	// LÛgica para calcular el ·rea de un cuadrado (lado^2).
-	area <- lado * lado;
+	// Comentario: L√≥gica para calcular el √°rea de un cuadrado (lado^2).
 FinSubProceso
 
 SubProceso area <- CalcularAreaTriangulo(base, altura)
-	// LÛgica para calcular el ·rea de un tri·ngulo ((b * h) / 2).
-	area <- (base * altura) / 2;
+	// Comentario: L√≥gica para calcular el √°rea de un tri√°ngulo ((b * h) / 2).
 FinSubProceso
 
 SubProceso area <- CalcularAreaTrapecio(baseMayor, baseMenor, altura)
-	// LÛgica para calcular el ·rea de un trapecio (((B + b) / 2) * h).
-	area <- ((baseMayor + baseMenor) * altura) / 2;
+	// Comentario: L√≥gica para calcular el √°rea de un trapecio (((B + b) / 2) * h).
 FinSubProceso
 
 // ------------------------------------------------------------------------------
-// 1.3 M”DULO: ESTADÕSTICA B¡SICA
+// 1.3 M√ìDULO: ESTAD√çSTICA B√ÅSICA
 // ------------------------------------------------------------------------------
 SubProceso media <- CalcularMedia(serieNumeros)
-	// Comentario: LÛgica para calcular la media aritmÈtica (promedio) de un arreglo de n˙meros.
+	media <- suma  / total;
 FinSubProceso
 
 SubProceso mediana <- CalcularMediana(serieNumeros)
-	// Comentario: LÛgica para calcular la mediana (valor central) de un arreglo de n˙meros.
+	// Comentario: L√≥gica para calcular la mediana (valor central) de un arreglo de n√∫meros.
 FinSubProceso
 
 SubProceso moda <- CalcularModa(serieNumeros)
-	// Comentario: LÛgica para calcular la moda (valor m·s frecuente) de un arreglo de n˙meros.
+	// Comentario: L√≥gica para calcular la moda (valor m√°s frecuente) de un arreglo de n√∫meros.
 FinSubProceso
 
 // ------------------------------------------------------------------------------
-// 1.4 M”DULO: SUCESI”N DE FIBONACCI
+// 1.4 M√ìDULO: SUCESI√ìN DE FIBONACCI
 // ------------------------------------------------------------------------------
 SubProceso GenerarFibonacci(inicial, cantidadTerminos)
-	// Comentario: LÛgica para generar 'cantidadTerminos' de la sucesiÛn de Fibonacci,
-	//  asegurando que los n˙meros generados sigan la secuencia correcta a partir del 'inicial'.
-	//  No debe retornar valor, solo mostrar la sucesiÛn.
+	// Comentario: L√≥gica para generar 'cantidadTerminos' de la sucesi√≥n de Fibonacci,
+	//  asegurando que los n√∫meros generados sigan la secuencia correcta a partir del 'inicial'.
+	//  No debe retornar valor, solo mostrar la sucesi√≥n.
 FinSubProceso
 
 	
 	
 // ==============================================================================
 // 2. ZONA DE PROCESO PRINCIPAL (MAIN)
-//    AquÌ se gestiona el flujo del programa: el men˙, la validaciÛn de la opciÛn
+//    Aqu√≠ se gestiona el flujo del programa: el men√∫, la validaci√≥n de la opci√≥n
 //    y las llamadas a los subprocesos definidos arriba.
 // ==============================================================================
 
 Algoritmo CalculadoraMultifuncional
-	// DefiniciÛn de variables
+	// Definici√≥n de variables
 	Definir opcion, operacionBasica Como Entero;
 	Definir numero1, numero2 Como Real;
+	Definir total,x Como Entero;
+	Definir n,suma,media Como Real;
 	
 	// Bucle principal de la calculadora
 	// Bucle principal de la calculadora
 	Repetir
-		Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-		// 1. Mostrar Men˙ al Usuario
+		Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
+		
+		// 1. Mostrar Men√∫ al Usuario
 		Escribir "==========================================================";
-		Escribir "         CALCULADORA MULTIFUNCIONAL - MEN⁄ PRINCIPAL        ";
+		Escribir "        CALCULADORA MULTIFUNCIONAL - MEN√ö PRINCIPAL       ";
 		Escribir "==========================================================";
-		Escribir "1. Operaciones B·sicas (+, -, *, /)";
-		Escribir "2. C·lculo de ¡reas, Di·metros y Radios";
-		Escribir "3. EstadÌstica B·sica (Media, Mediana, Moda)";
-		Escribir "4. SucesiÛn de Fibonacci";
+		Escribir "1. Operaciones B√°sicas (+, -, *, /)";
+		Escribir "2. C√°lculo de √Åreas, Di√°metros y Radios";
+		Escribir "3. Estad√≠stica B√°sica (Media, Mediana, Moda)";
+		Escribir "4. Sucesi√≥n de Fibonacci";
 		Escribir "0. SALIR de la Calculadora";
 		Escribir "==========================================================";
-		Escribir Sin Saltar "Ingrese su opciÛn: ";
+		Escribir Sin Saltar "Ingrese su opci√≥n: ";
 		Leer opcion;
 		
-		// 2. ValidaciÛn de Entrada
+		// 2. Validaci√≥n de Entrada
 		Si opcion < 0 O opcion > 4 Entonces
-			Escribir "ERROR: OpciÛn no v·lida. Por favor, ingrese un n˙mero entre 0 y 4. De ENTER para continuar";
+			Escribir "ERROR: Opci√≥n no v√°lida. Por favor, ingrese un n√∫mero entre 0 y 4. De ENTER para continuar";
 			Esperar Tecla; // Pausa para que el usuario pueda leer el error
 		SiNo
 			// 3. Estructura de Control (Switch/Segun)
 			Segun opcion Hacer
 				
-				1: // Operaciones B·sicas
-					Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+				1: // Operaciones B√°sicas
+					Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 					
-					// 1. Mostrar Men˙ al Usuario
+					// 1. Mostrar Men√∫ al Usuario
 					Escribir "==========================================================";
 					Escribir "                       OPERACIONES BASICAS                ";
 					Escribir "==========================================================";
@@ -129,13 +126,13 @@ Algoritmo CalculadoraMultifuncional
 					Escribir "3. Multiplicacion";
 					Escribir "4. Division";
 					Escribir "==========================================================";
-					Escribir Sin Saltar "Ingrese su opciÛn: ";
+					Escribir Sin Saltar "Ingrese su opci√≥n: ";
 					Leer operacionBasica;
 					
 					// Estructura de Control (Switch/Segun)
 					Segun operacionBasica Hacer
 						1: // Suma
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
 							// Encabezado
 							Escribir "==========================================================";
@@ -155,7 +152,7 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						2: // Resta
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
 							// Encabezado
 							Escribir "==========================================================";
@@ -175,7 +172,7 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						3: // Multiplicacion
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
 							// Encabezado
 							Escribir "==========================================================";
@@ -195,7 +192,7 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						4:
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
 							// Encabezado
 							Escribir "==========================================================";
@@ -215,7 +212,7 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						De Otro Modo:
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
 							// Encabezado
 							Escribir "==========================================================";
@@ -227,128 +224,98 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "Presione cualquier tecla para continuar";
 					FinSegun
 					
-					// Comentario: Llamar al subproceso encargado de las operaciones b·sicas.
+					// Comentario: Llamar al subproceso encargado de las operaciones b√°sicas.
 					// SubProceso ManejarOperacionesBasicas(); 
-				2: // C·lculo de ¡reas, Di·metros y Radios
-					Limpiar Pantalla;
+				2: // C√°lculo de √Åreas, Di√°metros y Radios
+					// Comentario: Llamar al subproceso encargado de los c√°lculos geom√©tricos.
+					// SubProceso ManejarGeometria();
+					Escribir "Ha seleccionado C√°lculo de √Åreas. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
 					
-					// 1. Mostrar Men˙ de GeometrÌa
-					Escribir "==========================================================";
-					Escribir "                 C¡LCULO GEOM…TRICO                     ";
-					Escribir "==========================================================";
-					Escribir "1. ¡rea de CÌrculo";
-					Escribir "2. Radio de CÌrculo (dado el di·metro)";
-					Escribir "3. Di·metro de CÌrculo (dado el radio)";
-					Escribir "4. ¡rea de Cuadrado";
-					Escribir "5. ¡rea de Tri·ngulo";
-					Escribir "6. ¡rea de Trapecio";
-					Escribir "==========================================================";
-					Escribir Sin Saltar "Ingrese su opciÛn: ";
-					Leer opcionGeometria;
+				3: // Estad√≠stica B√°sica
 					
-					// Estructura de Control (Switch/Segun) para GeometrÌa
-					Segun opcionGeometria Hacer
-						1: // ¡rea CÌrculo
-							Limpiar Pantalla;
+							// Comentario: Llamar al subproceso encargado de la estad√≠stica (Media, Mediana, Moda).
+							// SubProceso ManejarEstadistica();
+							Escribir "Ha seleccionado Estad√≠stica B√°sica. De ENTER para continuar";
+							// 1. Mostrar Men√∫ al Usuario
 							Escribir "==========================================================";
-							Escribir "                         ¡REA DE CÕRCULO                    ";
+							Escribir "                    ESTADISTICA BASICA                    ";
 							Escribir "==========================================================";
-							Escribir "Ingrese el radio del cÌrculo:";
-							Leer radio;
-							Escribir "El ·rea del cÌrculo es: ", CalcularAreaCirculo(radio);
+							Escribir "1. Media";
+							Escribir "2. Moda";
+							Escribir "3. Mediana";
+							Escribir "==========================================================";
+							Escribir Sin Saltar "Ingrese su opci√≥n: ";
+							Leer operacionBasica;
 							
-						2: // Radio CÌrculo
-							Limpiar Pantalla;
-							Escribir "==========================================================";
-							Escribir "                       RADIO DE CÕRCULO                     ";
-							Escribir "==========================================================";
-							Escribir "Ingrese el di·metro del cÌrculo:";
-							Leer diametro;
-							Escribir "El radio del cÌrculo es: ", CalcularRadioCirculo(diametro);
+					// Estructura de Control (Switch/Segun)
+					Segun operacionBasica Hacer
+						1: // Media
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 							
-						3: // Di·metro CÌrculo
-							Limpiar Pantalla;
+							// Encabezado
 							Escribir "==========================================================";
-							Escribir "                     DI¡METRO DE CÕRCULO                  ";
+							Escribir "                         MEDIA                            ";
 							Escribir "==========================================================";
-							Escribir "Ingrese el radio del cÌrculo:";
-							Leer radio;
-							Escribir "El di·metro del cÌrculo es: ", CalcularDiametroCirculo(radio);
 							
-						4: // ¡rea Cuadrado
-							Limpiar Pantalla;
-							Escribir "==========================================================";
-							Escribir "                       ¡REA DE CUADRADO                   ";
-							Escribir "==========================================================";
-							Escribir "Ingrese el lado del cuadrado:";
-							Leer lado;
-							Escribir "El ·rea del cuadrado es: ", CalcularAreaCuadrado(lado);
+							// Solicitar datos
+							Escribir "Ingresa el total de numeros";
+							Leer total;
+							x = 1;
+							suma = 0;
+							Mientras x <= total Hacer
+								Escribir  "Ingresa el numero", x;
+								Leer n;
+								suma= suma + n;
+								x= x + 1;
+							FinMientras
+							media = suma / total;
 							
-						5: // ¡rea Tri·ngulo
-							Limpiar Pantalla;
-							Escribir "==========================================================";
-							Escribir "                      ¡REA DE TRI¡NGULO                   ";
-							Escribir "==========================================================";
-							Escribir "Ingrese la base del tri·ngulo:";
-							Leer base;
-							Escribir "Ingrese la altura del tri·ngulo:";
-							Leer altura;
-							Escribir "El ·rea del tri·ngulo es: ", CalcularAreaTriangulo(base, altura);
+							// Imprimir el resultado
+							Escribir  " La media es :", media; 
 							
-						6: // ¡rea Trapecio
-							Limpiar Pantalla;
-							Escribir "==========================================================";
-							Escribir "                      ¡REA DE TRAPECIO                    ";
-							Escribir "==========================================================";
-							Escribir "Ingrese la base mayor del trapecio:";
-							Leer baseMayor;
-							Escribir "Ingrese la base menor del trapecio:";
-							Leer baseMenor;
-							Escribir "Ingrese la altura del trapecio:";
-							Leer altura;
-							Escribir "El ·rea del trapecio es: ", CalcularAreaTrapecio(baseMayor, baseMenor, altura);
+						2: // Moda
 							
+						3: //Mediana
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
 						De Otro Modo:
-							Limpiar Pantalla;
+							Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
+							
+							// Encabezado
 							Escribir "==========================================================";
-							Escribir "                                ERROR                       ";
+							Escribir "                          ERROR                           ";
 							Escribir "==========================================================";
-							Escribir "OpciÛn geomÈtrica no v·lida.";
+							
+							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "";
+							Escribir "Presione cualquier tecla para continuar";
 					FinSegun
+							
+							
 					
-					// Confirmacion del usuario para continuar y limpiar la pantalla
-					Escribir "";
-					Escribir "Presione cualquier tecla para continuar";
-					
-				3: // EstadÌstica B·sica
-					// Comentario: Llamar al subproceso encargado de la estadÌstica (Media, Mediana, Moda).
-					// SubProceso ManejarEstadistica();
-					Escribir "Ha seleccionado EstadÌstica B·sica. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
-					
-				4: // SucesiÛn de Fibonacci
-					// Comentario: Llamar al subproceso encargado de generar la sucesiÛn.
+				4: // Sucesi√≥n de Fibonacci
+					// Comentario: Llamar al subproceso encargado de generar la sucesi√≥n.
 					// SubProceso ManejarFibonacci();
-					Escribir "Ha seleccionado SucesiÛn de Fibonacci. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
+					Escribir "Ha seleccionado Sucesi√≥n de Fibonacci. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
 					
 				0: // SALIR
-					Escribir "Saliendo de la Calculadora. °Hasta pronto!";
+					Escribir "Saliendo de la Calculadora. ¬°Hasta pronto!";
 					
-				De Otro Modo: // Se puede omitir si ya se hizo la validaciÛn con el Si-Entonces, pero se mantiene por seguridad.
-					Escribir "ERROR INTERNO: OpciÛn no manejada.";
+				De Otro Modo: // Se puede omitir si ya se hizo la validaci√≥n con el Si-Entonces, pero se mantiene por seguridad.
+					Escribir "ERROR INTERNO: Opci√≥n no manejada.";
 					
 			FinSegun
 			
-			// Pausar solo si no est· saliendo
-			Si opcion <> 0 Entonces
-				Esperar Tecla;
-			FinSi
+			// Pausar solo si no est√° saliendo
+            Si opcion <> 0 Entonces
+                Esperar Tecla;
+            FinSi
 			
 		FinSi
 		
-		
-	Hasta Que opcion = 0; // El ciclo se repite hasta que el usuario elija la opciÛn 0
-
-
+	Hasta Que opcion = 0; // El ciclo se repite hasta que el usuario elija la opci√≥n 0
 FinAlgoritmo
 
 		
