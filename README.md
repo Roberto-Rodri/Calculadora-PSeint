@@ -44,7 +44,7 @@ Validación de Tipo de Dato: Confiamos en el intérprete de PSeInt para el manej
 * **Commits y PRs:** Commits: Todo el trabajo se guarda en la rama feature usando commits atómicos y descriptivos. Seguimos una convención para los mensajes de commit, como [FEAT] para nuevas funcionalidades (ej. [FEAT] Agrega subproceso CalcularAreaTriangulo), [FIX] para corrección de errores (ej. [FIX] Corrige validación en menú de geometría) o [DOCS] para documentación.
 
 Pull Requests: Una vez que una funcionalidad está completa en su rama (feature/geometria), no se fusiona (merge) directamente a main. En su lugar, se abre un Pull Request (PR) en GitHub. Este PR actúa como una solicitud de revisión: los otros miembros del equipo pueden revisar el código, dejar comentarios y asegurarse de que no introduce errores. Solo después de que el PR es aprobado por el equipo, el código se fusiona a main, garantizando la calidad y la integridad de la rama principal.
-* **[Aquí se adjuntará el enlace al historial de Commits en GitHub]**
+
 
 ---
 
@@ -84,7 +84,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 | Nombre del Estudiante | Módulo Principal Asignado |
 | :--- | :--- |
 | Jimenez Rodriguez Roberto Carlos | *Operaciones Básicas* |
-| Estudiante 2 | *[Indicar: Geometría (Completa)]* |
+| Olguin Cano Julian Eduardo | *calculo de areas,Geometría* |
 | Estudiante 3 | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
 
