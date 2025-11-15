@@ -73,7 +73,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 | :--- | :--- |
 | Estudiante 1 | *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
 | Estudiante 2 | *[Indicar: Geometría (Completa)]* |
-| Frida Sofia Coronel Olvera | *[Indicar: Estadística Básica]* |
+| Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
 
 ---
