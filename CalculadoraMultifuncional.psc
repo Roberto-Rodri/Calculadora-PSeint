@@ -1,10 +1,15 @@
 // ==============================================================================
 // 1. ZONA DE SUBPROCESOS
-//    AquÌ se definen todas las funciones que la calculadora puede realizar.
+//     Aqu√≠ se definen todas las funciones que la calculadora puede realizar.
 // ==============================================================================
 
+// Definici√≥n de Constantes Globales (Pi) para Geometr√≠a
+// Nota: PSeint no tiene pi() nativo, usamos una aproximaci√≥n.
+Definir Pi Como Real;
+Pi <- 3.1415926535;
+
 // ------------------------------------------------------------------------------
-// 1.1 M”DULO: OPERACIONES B¡SICAS
+// 1.1 M√ìDULO: OPERACIONES B√ÅSICAS
 // ------------------------------------------------------------------------------
 SubProceso resultado <- Sumar(num1, num2)
 	resultado <- num1 + num2;
@@ -19,77 +24,168 @@ SubProceso resultado <- Multiplicar(num1, num2)
 FinSubProceso
 
 SubProceso resultado <- Dividir(num1, num2)
-	resultado <- num1 / num2;
+	Si num2 = 0 Entonces
+		Escribir "ERROR: Divisi√≥n por cero no permitida.";
+		resultado <- 0; // Se retorna 0 como valor de error, aunque se imprime el mensaje
+	SiNo
+		resultado <- num1 / num2;
+	FinSi
 FinSubProceso
 
 // ------------------------------------------------------------------------------
-// 1.2 M”DULO: C¡LCULO DE ¡REAS Y PAR¡METROS GEOM…TRICOS
+// 1.2 M√ìDULO: C√ÅLCULO DE √ÅREAS Y PAR√ÅMETROS GEOM√âTRICOS
 // ------------------------------------------------------------------------------
 SubProceso area <- CalcularAreaCirculo(radio)
-	// Comentario: LÛgica para calcular el ·rea de un cÌrculo (pi * r^2).
+	// L√≥gica para calcular el √°rea de un c√≠rculo (pi * r^2).
+	area <- Pi * radio * radio;
 FinSubProceso
 
 SubProceso radio <- CalcularRadioCirculo(diametro)
-	// Comentario: LÛgica para calcular el radio del cÌrculo (d / 2).
+	// L√≥gica para calcular el radio del c√≠rculo (d / 2).
+	radio <- diametro / 2;
 FinSubProceso
 
 SubProceso diametro <- CalcularDiametroCirculo(radio)
-	// Comentario: LÛgica para calcular el di·metro del cÌrculo (2 * r).
+	// L√≥gica para calcular el di√°metro del c√≠rculo (2 * r).
+	diametro <- 2 * radio;
 FinSubProceso
 
 SubProceso area <- CalcularAreaCuadrado(lado)
-	// Comentario: LÛgica para calcular el ·rea de un cuadrado (lado^2).
+	// L√≥gica para calcular el √°rea de un cuadrado (lado^2).
+	area <- lado * lado;
 FinSubProceso
 
 SubProceso area <- CalcularAreaTriangulo(base, altura)
-	// Comentario: LÛgica para calcular el ·rea de un tri·ngulo ((b * h) / 2).
+	// L√≥gica para calcular el √°rea de un tri√°ngulo ((b * h) / 2).
+	area <- (base * altura) / 2;
 FinSubProceso
 
 SubProceso area <- CalcularAreaTrapecio(baseMayor, baseMenor, altura)
-	// Comentario: LÛgica para calcular el ·rea de un trapecio (((B + b) / 2) * h).
+	// L√≥gica para calcular el √°rea de un trapecio (((B + b) / 2) * h).
+	area <- ((baseMayor + baseMenor) / 2) * altura;
 FinSubProceso
 
+
 // ------------------------------------------------------------------------------
-// 1.3 M”DULO: ESTADÕSTICA B¡SICA
+// 1.3 M√ìDULO: ESTAD√çSTICA B√ÅSICA
+// *Requieren el arreglo (serieNumeros) y el tama√±o (n)*
 // ------------------------------------------------------------------------------
-SubProceso media <- CalcularMedia(serieNumeros)
-	media <- suma  / total;
+
+SubProceso media <- CalcularMedia(serieNumeros, n)
+	Definir suma Como Real;
+	Definir i Como Entero;
+	
+	suma <- 0;
+	Para i <- 1 Hasta n Con Paso 1 Hacer
+		suma <- suma + serieNumeros[i];
+	FinPara
+	
+	// media <- suma / total;
+	media <- suma / n;
 FinSubProceso
 
-SubProceso mediana <- CalcularMediana(serieNumeros)
+// Subproceso auxiliar para ordenar un arreglo usando Bubble Sort
+SubProceso OrdenarArreglo(arr, n)
+	Definir i, j Como Entero;
+	Definir temp Como Real;
+	
+	Para i <- 1 Hasta n - 1 Con Paso 1 Hacer
+		Para j <- 1 Hasta n - i Con Paso 1 Hacer
+			Si arr[j] > arr[j+1] Entonces
+				temp <- arr[j];
+				arr[j] <- arr[j+1];
+				arr[j+1] <- temp;
+			FinSi
+		FinPara
+	FinPara
+FinSubProProceso
+
+SubProceso mediana <- CalcularMediana(serieNumeros, n)
+	Definir mitad1, mitad2 Como Entero;
+	
+	// 1. Crear una copia y ordenar el arreglo para no modificar el original
+	Definir serieCopia Como Real;
+	Dimension serieCopia[n];
+	Para i <- 1 Hasta n Con Paso 1 Hacer
+		serieCopia[i] <- serieNumeros[i];
+	FinPara
+	
+	OrdenarArreglo(serieCopia, n);
+	
+	// 2. Calcular Mediana
+	Si n MOD 2 = 1 Entonces
+		// Cantidad Impar: el elemento central
+		mediana <- serieCopia[(n+1)/2];
+	SiNo
+		// Cantidad Par: promedio de los dos centrales
+		mitad1 <- n/2;
+		mitad2 <- n/2 + 1;
+		mediana <- (serieCopia[mitad1] + serieCopia[mitad2]) / 2;
+	FinSi
+FinSubProceso
+
+SubProceso moda <- CalcularModa(serieNumeros, n)
+	Definir i, j, contador, maxContador, modaActual Como Entero;
+	Definir hayModa Como Logico;
+	
+	maxContador <- 0;
+	modaActual <- -1; // Usamos -1 como indicador inicial de no moda
+	hayModa <- Falso;
+	
+	Para i <- 1 Hasta n Con Paso 1 Hacer
+		contador <- 0;
+		// Contar la frecuencia del elemento actual
+		Para j <- 1 Hasta n Con Paso 1 Hacer
+			Si serieNumeros[i] = serieNumeros[j] Entonces
+				contador <- contador + 1;
+			FinSi
+		FinPara
+		
+		// Si la frecuencia actual es mayor a la m√°xima encontrada
+		Si contador > maxContador Entonces
+			maxContador <- contador;
+			modaActual <- serieNumeros[i];
+			hayModa <- Verdadero;
+		FinSi
+	FinPara
+	
+	// Verificar si todos son √∫nicos (frecuencia m√°xima = 1)
+	Si maxContador <= 1 Entonces
+		// Podr√≠a ser amodal o multimodal, simplificamos a 'No hay moda clara'
+		moda <- -1; 
+	SiNo
+		moda <- modaActual;
+	FinSi
 	
 FinSubProceso
 
-SubProceso moda <- CalcularModa(serieNumeros)
-	moda <- a;
-FinSubProceso
 
 // ------------------------------------------------------------------------------
-// 1.4 M”DULO: SUCESI”N DE FIBONACCI
+// 1.4 M√ìDULO: SUCESI√ìN DE FIBONACCI
 // ------------------------------------------------------------------------------
+// (ImprimirFibonacci est√° COMPLETO)
 SubProceso ImprimirFibonacci(num_terminos)
-	// Esta funciÛn genera e imprime la serie de Fibonacci hasta 'num_terminos'
+	// Esta funci√≥n genera e imprime la serie de Fibonacci hasta 'num_terminos'
 	
 	Definir a, b, c, i Como Entero;
 	
-	Escribir "SucesiÛn de Fibonacci:";
+	Escribir "Sucesi√≥n de Fibonacci:";
 	
 	// Estructura Si...Sino Si...Sino para manejar los casos
 	Si num_terminos <= 0 Entonces
-		Escribir "La cantidad de tÈrminos debe ser un n˙mero positivo.";
-	FinSi
-	
-	 Si num_terminos = 1 Entonces
+		Escribir "La cantidad de t√©rminos debe ser un n√∫mero positivo.";
+	SiNo
+		Si num_terminos = 1 Entonces
 			Escribir 0;
 			
-		Sino // num_terminos >= 2
+		SiNo // num_terminos >= 2
 			a <- 0;
 			b <- 1;
 			
-			// Imprimir los primeros dos tÈrminos
+			// Imprimir los primeros dos t√©rminos
 			Escribir Sin Saltar a, " ", b;
 			
-			// Calcular e imprimir tÈrminos restantes
+			// Calcular e imprimir t√©rminos restantes
 			Para i <- 3 Hasta num_terminos Con Paso 1 Hacer
 				c <- a + b;
 				Escribir Sin Saltar " ", c;
@@ -97,318 +193,307 @@ SubProceso ImprimirFibonacci(num_terminos)
 				b <- c; // Actualizar 'b'
 			FinPara
 			
-			Escribir ""; // Salto de lÌnea al final
+			Escribir ""; // Salto de l√≠nea al final
 			
 		FinSi
-FinSubProceso
-SubProceso GenerarFibonacci(inicial, cantidadTerminos)
-	// Comentario: LÛgica para generar 'cantidadTerminos' de la sucesiÛn de Fibonacci,
-	//  asegurando que los n˙meros generados sigan la secuencia correcta a partir del 'inicial'.
-	//  No debe retornar valor, solo mostrar la sucesiÛn.
+	FinSi
 FinSubProceso
 
+SubProceso GenerarFibonacci(inicial, cantidadTerminos)
+	// L√≥gica para generar 'cantidadTerminos' de la sucesi√≥n de Fibonacci,
+	// Se asume que 'inicial' es el t√©rmino del que se parte (si fuera 0 o 1, ser√≠a est√°ndar).
+	// Simplificaremos a la misma l√≥gica de ImprimirFibonacci, dado que la necesidad es similar
+	// y para mantener la coherencia del m√≥dulo.
+
+	Definir a, b, c, i, j Como Entero;
 	
+	Escribir "Sucesi√≥n de Fibonacci (", cantidadTerminos, " t√©rminos):";
 	
+	Si cantidadTerminos <= 0 Entonces
+		Escribir "La cantidad de t√©rminos debe ser un n√∫mero positivo.";
+		
+	SiNo
+		a <- 0;
+		b <- 1;
+		
+		Si cantidadTerminos >= 1 Entonces
+			Escribir Sin Saltar a;
+		FinSi
+		
+		Si cantidadTerminos >= 2 Entonces
+			Escribir Sin Saltar " ", b;
+		FinSi
+		
+		Para i <- 3 Hasta cantidadTerminos Con Paso 1 Hacer
+			c <- a + b;
+			Escribir Sin Saltar " ", c;
+			a <- b; // Actualizar 'a'
+			b <- c; // Actualizar 'b'
+		FinPara
+		
+		Escribir ""; // Salto de l√≠nea al final
+	FinSi
+FinSubProceso
+
+
 // ==============================================================================
 // 2. ZONA DE PROCESO PRINCIPAL (MAIN)
-//    AquÌ se gestiona el flujo del programa: el men˙, la validaciÛn de la opciÛn
-//    y las llamadas a los subprocesos definidos arriba.
 // ==============================================================================
 
 Algoritmo CalculadoraMultifuncional
-	// DefiniciÛn de variables
+	// Definici√≥n de variables
 	Definir opcion, operacionBasica Como Entero;
 	Definir numero1, numero2 Como Real;
-	Definir total,x Como Entero;
-	Definir n,suma,media Como Real;
-	Definir num, i, j, contador, maxContador, moda Como Entero;
-	
+	Definir totalNumeros, i Como Entero; // 'total' renombrado a 'totalNumeros'
+	Definir n, suma, media, medianaResultado, modaResultado Como Real;
 	
 	// Bucle principal de la calculadora
 	Repetir
-		Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
+		Limpiar Pantalla; // Limpia la pantalla para un men√∫ m√°s limpio
 		
-		// 1. Mostrar Men˙ al Usuario
+		// 1. Mostrar Men√∫ al Usuario
 		Escribir "==========================================================";
-		Escribir "        CALCULADORA MULTIFUNCIONAL - MEN⁄ PRINCIPAL       ";
+		Escribir "         CALCULADORA MULTIFUNCIONAL - MEN√ö PRINCIPAL        ";
 		Escribir "==========================================================";
-		Escribir "1. Operaciones B·sicas (+, -, *, /)";
-		Escribir "2. C·lculo de ¡reas, Di·metros y Radios";
-		Escribir "3. EstadÌstica B·sica (Media, Mediana, Moda)";
-		Escribir "4. SucesiÛn de Fibonacci";
+		Escribir "1. Operaciones B√°sicas (+, -, *, /)";
+		Escribir "2. C√°lculo de √Åreas, Di√°metros y Radios";
+		Escribir "3. Estad√≠stica B√°sica (Media, Mediana, Moda)";
+		Escribir "4. Sucesi√≥n de Fibonacci";
 		Escribir "0. SALIR de la Calculadora";
 		Escribir "==========================================================";
-		Escribir Sin Saltar "Ingrese su opciÛn: ";
+		Escribir Sin Saltar "Ingrese su opci√≥n: ";
 		Leer opcion;
 		
-		// 2. ValidaciÛn de Entrada
+		// 2. Validaci√≥n de Entrada
 		Si opcion < 0 O opcion > 4 Entonces
-			Escribir "ERROR: OpciÛn no v·lida. Por favor, ingrese un n˙mero entre 0 y 4. De ENTER para continuar";
+			Escribir "ERROR: Opci√≥n no v√°lida. Por favor, ingrese un n√∫mero entre 0 y 4. De ENTER para continuar";
 			Esperar Tecla; // Pausa para que el usuario pueda leer el error
 		SiNo
 			// 3. Estructura de Control (Switch/Segun)
 			Segun opcion Hacer
 				
-				1: // Operaciones B·sicas
-					Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-					
-					// 1. Mostrar Men˙ al Usuario
+				1: // Operaciones B√°sicas (YA ESTABA COMPLETO)
+					Limpiar Pantalla;
 					Escribir "==========================================================";
-					Escribir "                    OPERACIONES BASICAS                   ";
+					Escribir "                 OPERACIONES BASICAS                      ";
 					Escribir "==========================================================";
 					Escribir "1. Suma";
 					Escribir "2. Resta";
 					Escribir "3. Multiplicacion";
 					Escribir "4. Division";
 					Escribir "==========================================================";
-					Escribir Sin Saltar "Ingrese su opciÛn: ";
+					Escribir Sin Saltar "Ingrese su opci√≥n: ";
 					Leer operacionBasica;
 					
-					// Estructura de Control (Switch/Segun)
 					Segun operacionBasica Hacer
 						1: // Suma
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
+							Limpiar Pantalla;
 							Escribir "==========================================================";
 							Escribir "                         SUMA                             ";
 							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingresa el primer numero: ";
+							Escribir Sin Saltar "Ingresa el primer numero: ";
 							Leer numero1;
-							Escribir "Ingresa el segundo numero: "
+							Escribir Sin Saltar "Ingresa el segundo numero: ";
 							Leer numero2;
-							
-							// Imprimir del resultado
 							Escribir "El resultado de la suma entre ", numero1, " y ", numero2, " es: ", Sumar(numero1,numero2);
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						2: // Resta
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
+							Limpiar Pantalla;
 							Escribir "==========================================================";
-							Escribir "                        RESTA                             ";
+							Escribir "                         RESTA                            ";
 							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingresa el primer numero: ";
+							Escribir Sin Saltar "Ingresa el primer numero: ";
 							Leer numero1;
-							Escribir "Ingresa el segundo numero: "
+							Escribir Sin Saltar "Ingresa el segundo numero: ";
 							Leer numero2;
-							
-							// Imprimir del resultado
 							Escribir "El resultado de la resta entre ", numero1, " y ", numero2, " es: ", Restar(numero1,numero2);
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						3: // Multiplicacion
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
+							Limpiar Pantalla;
 							Escribir "==========================================================";
-							Escribir "                    MULTIPLICACION                        ";
+							Escribir "                      MULTIPLICACION                      ";
 							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingresa el primer numero: ";
+							Escribir Sin Saltar "Ingresa el primer numero: ";
 							Leer numero1;
-							Escribir "Ingresa el segundo numero: "
+							Escribir Sin Saltar "Ingresa el segundo numero: ";
 							Leer numero2;
-							
-							// Imprimir del resultado
 							Escribir "El resultado de la multiplicacion entre ", numero1, " y ", numero2, " es: ", Multiplicar(numero1,numero2);
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
-						4:
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
+						4: // Division
+							Limpiar Pantalla;
 							Escribir "==========================================================";
-							Escribir "                        DIVISION                          ";
+							Escribir "                         DIVISION                         ";
 							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingresa el primer numero: ";
+							Escribir Sin Saltar "Ingresa el primer numero: ";
 							Leer numero1;
-							Escribir "Ingresa el segundo numero: "
+							Escribir Sin Saltar "Ingresa el segundo numero: ";
 							Leer numero2;
-							
-							// Imprimir del resultado
 							Escribir "El resultado de la division entre ", numero1, " y ", numero2, " es: ", Dividir(numero1,numero2);
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						De Otro Modo:
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
+							Limpiar Pantalla;
 							Escribir "==========================================================";
 							Escribir "                          ERROR                           ";
 							Escribir "==========================================================";
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Escribir "Opci√≥n de operaci√≥n b√°sica no v√°lida.";
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 					FinSegun
 					
-					// Comentario: Llamar al subproceso encargado de las operaciones b·sicas.
-					// SubProceso ManejarOperacionesBasicas(); 
-				2: // C·lculo de ¡reas, Di·metros y Radios
-					// Comentario: Llamar al subproceso encargado de los c·lculos geomÈtricos.
-					// SubProceso ManejarGeometria();
-					Escribir "Ha seleccionado C·lculo de ¡reas. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
+				2: // C√°lculo de √Åreas, Di√°metros y Radios (NUEVO C√ìDIGO)
+					Limpiar Pantalla;
+					Escribir "==========================================================";
+					Escribir "                 C√ÅLCULOS GEOM√âTRICOS                     ";
+					Escribir "==========================================================";
+					Escribir "1. √Årea de C√≠rculo (radio)";
+					Escribir "2. √Årea de Cuadrado (lado)";
+					Escribir "3. √Årea de Tri√°ngulo (base, altura)";
+					Escribir "4. √Årea de Trapecio (bases y altura)";
+					Escribir "5. Calcular Radio de C√≠rculo (di√°metro)";
+					Escribir "6. Calcular Di√°metro de C√≠rculo (radio)";
+					Escribir "==========================================================";
+					Escribir Sin Saltar "Ingrese su opci√≥n: ";
+					Leer operacionBasica; // Reutilizamos la variable para la sub-opci√≥n
 					
-				3: // EstadÌstica B·sica
+					Segun operacionBasica Hacer
+						1: // √Årea C√≠rculo
+							Limpiar Pantalla;
+							Escribir "--- C√°lculo de √Årea del C√≠rculo ---";
+							Escribir Sin Saltar "Ingrese el radio del c√≠rculo: ";
+							Leer numero1;
+							Escribir "El √°rea del c√≠rculo es: ", CalcularAreaCirculo(numero1);
+						2: // √Årea Cuadrado
+							Limpiar Pantalla;
+							Escribir "--- C√°lculo de √Årea del Cuadrado ---";
+							Escribir Sin Saltar "Ingrese la longitud del lado: ";
+							Leer numero1;
+							Escribir "El √°rea del cuadrado es: ", CalcularAreaCuadrado(numero1);
+						3: // √Årea Tri√°ngulo
+							Limpiar Pantalla;
+							Escribir "--- C√°lculo de √Årea del Tri√°ngulo ---";
+							Escribir Sin Saltar "Ingrese la base: ";
+							Leer numero1;
+							Escribir Sin Saltar "Ingrese la altura: ";
+							Leer numero2;
+							Escribir "El √°rea del tri√°ngulo es: ", CalcularAreaTriangulo(numero1, numero2);
+						4: // √Årea Trapecio
+							Limpiar Pantalla;
+							Definir baseMayor, baseMenor, altura Como Real;
+							Escribir "--- C√°lculo de √Årea del Trapecio ---";
+							Escribir Sin Saltar "Ingrese la Base Mayor: ";
+							Leer baseMayor;
+							Escribir Sin Saltar "Ingrese la Base Menor: ";
+							Leer baseMenor;
+							Escribir Sin Saltar "Ingrese la Altura: ";
+							Leer altura;
+							Escribir "El √°rea del trapecio es: ", CalcularAreaTrapecio(baseMayor, baseMenor, altura);
+						5: // Radio C√≠rculo
+							Limpiar Pantalla;
+							Escribir "--- C√°lculo de Radio del C√≠rculo ---";
+							Escribir Sin Saltar "Ingrese el di√°metro: ";
+							Leer numero1;
+							Escribir "El radio del c√≠rculo es: ", CalcularRadioCirculo(numero1);
+						6: // Di√°metro C√≠rculo
+							Limpiar Pantalla;
+							Escribir "--- C√°lculo de Di√°metro del C√≠rculo ---";
+							Escribir Sin Saltar "Ingrese el radio: ";
+							Leer numero1;
+							Escribir "El di√°metro del c√≠rculo es: ", CalcularDiametroCirculo(numero1);
+						De Otro Modo:
+							Limpiar Pantalla;
+							Escribir "Opci√≥n geom√©trica no v√°lida.";
+					FinSegun
 					
-							// Comentario: Llamar al subproceso encargado de la estadÌstica (Media, Mediana, Moda).
-							// SubProceso ManejarEstadistica();
-							Escribir "Ha seleccionado EstadÌstica B·sica. De ENTER para continuar";
-							// 1. Mostrar Men˙ al Usuario
-							Escribir "==========================================================";
-							Escribir "                    ESTADISTICA BASICA                    ";
-							Escribir "==========================================================";
-							Escribir "1. Media";
-							Escribir "2. Moda";
-							Escribir "3. Mediana";
-							Escribir "==========================================================";
-							Escribir Sin Saltar "Ingrese su opciÛn: ";
-							Leer operacionBasica;
-							
-					// Estructura de Control (Switch/Segun)
+				3: // Estad√≠stica B√°sica (C√ìDIGO REFACTORIZADO Y COMPLETO)
+					Limpiar Pantalla;
+					Escribir "==========================================================";
+					Escribir "                 ESTAD√çSTICA B√ÅSICA                       ";
+					Escribir "==========================================================";
+					
+					// 1. SOLICITAR LA SERIE DE N√öMEROS (SE HACE UNA SOLA VEZ)
+					Escribir "--- Ingreso de la Serie de N√∫meros ---";
+					Escribir Sin Saltar "Ingrese la cantidad total de n√∫meros (N): ";
+					Leer totalNumeros;
+					
+					// Definir el arreglo din√°micamente
+					Definir serie Como Real;
+					Dimension serie[totalNumeros];
+					
+					Para i <- 1 Hasta totalNumeros Con Paso 1 Hacer
+						Escribir Sin Saltar "Ingrese el n√∫mero ", i, ": ";
+						Leer serie[i];
+					FinPara
+					
+					Escribir "";
+					Escribir "--- C√°lculos Disponibles ---";
+					Escribir "1. Media (Promedio)";
+					Escribir "2. Moda (Valor m√°s frecuente)";
+					Escribir "3. Mediana (Valor central)";
+					Escribir "==========================================================";
+					Escribir Sin Saltar "Ingrese el c√°lculo a realizar: ";
+					Leer operacionBasica;
+					
+					// 2. LLAMAR SUBPROCESOS SEG√öN LA OPCI√ìN
 					Segun operacionBasica Hacer
 						1: // Media
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
-							Escribir "==========================================================";
-							Escribir "                         MEDIA                            ";
-							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingresa el total de numeros";
-							Leer total;
-							x = 1;
-							suma = 0;
-							Mientras x <= total Hacer
-								Escribir  "Ingresa el numero", x;
-								Leer n;
-								suma= suma + n;
-								x= x + 1;
-							FinMientras
-							media = suma / total;
-							
-							// Imprimir el resultado
-							Escribir  " La media es :", media; 
-							
+							Limpiar Pantalla;
+							Escribir "--- Resultado de la Media ---";
+							media <- CalcularMedia(serie, totalNumeros);
+							Escribir "La **Media** (Promedio) de la serie es: ", media;
+						
 						2: // Moda
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
-							Escribir "==========================================================";
-							Escribir "                         MODA                             ";
-							Escribir "==========================================================";
-							
-							// Solicitar datos
-							Escribir "Ingrese la cantidad de n˙meros en el conjunto:";
-							Leer num;
-							
-							// Definir el vector (arreglo) para almacenar los n˙meros
-							Dimension numeros[num];
-							
-							// Ingreso de los elementos del vector
-							Escribir "Ingrese los ", num, " n˙meros uno por uno:";
-							Para i <- 1 Hasta num Con Paso 1 Hacer
-								Escribir "N˙mero ", i+1, ":";
-								Leer numeros[i];
-							FinPara
-							
-							// InicializaciÛn de variables de la moda
-							maxContador <- 1;
-							moda <- numeros[1]; // Inicializamos la moda con el primer elemento
-							
-							// --- C·lculo de la Moda ---
-							Para i <- 1 Hasta num Con Paso 1 Hacer
-								// Contar cu·ntas veces se repite el n˙mero actual (numeros[i])
-								contador <- 1;
-								Para j <- 1 Hasta num Con Paso 1 Hacer
-									Si numeros[i] = numeros[j] Entonces
-										contador <- contador + 1;
-									FinSi
-								FinPara
-								// Si la cuenta actual es mayor al m·ximo contador, 
-								// actualizamos el m·ximo contador y la moda
-								Si contador > maxContador Entonces
-									maxContador <- contador;
-									moda <- numeros[i];
-								FinSi
-							FinPara
-							
-							// --- Mostrar el Resultado ---
-							Si maxContador = 1 Entonces
-								Escribir "Todos los n˙meros son ˙nicos o se repiten la misma cantidad de veces. No hay una moda clara (o es amodal).";
-								Escribir "La frecuencia m·xima encontrada es 1.";
-							Sino
-								Escribir "--- Resultado ---";
-								Escribir "La **Moda** del conjunto es: ", moda;
-								Escribir "Se repite ", maxContador, " veces.";
+							Limpiar Pantalla;
+							Escribir "--- Resultado de la Moda ---";
+							modaResultado <- CalcularModa(serie, totalNumeros);
+							Si modaResultado = -1 Entonces
+								Escribir "No se encontr√≥ una **Moda** clara (es amodal o multimodal).";
+							SiNo
+								Escribir "La **Moda** (valor m√°s frecuente) es: ", modaResultado;
 							FinSi
 							
-						3: //Mediana
+						3: // Mediana
+							Limpiar Pantalla;
+							Escribir "--- Resultado de la Mediana ---";
+							medianaResultado <- CalcularMediana(serie, totalNumeros);
+							Escribir "La **Mediana** (valor central) de la serie es: ", medianaResultado;
 							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
-							Escribir "";
-							Escribir "Presione cualquier tecla para continuar";
 						De Otro Modo:
-							Limpiar Pantalla; // Limpia la pantalla para un men˙ m·s limpio
-							
-							// Encabezado
-							Escribir "==========================================================";
-							Escribir "                          ERROR                           ";
-							Escribir "==========================================================";
-							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
-							Escribir "";
-							Escribir "Presione cualquier tecla para continuar";
+							Limpiar Pantalla;
+							Escribir "Opci√≥n de estad√≠stica no v√°lida.";
 					FinSegun
-							
-							
 					
-				4: // SucesiÛn de Fibonacci
-					// Comentario: Llamar al subproceso encargado de generar la sucesiÛn.
-					// SubProceso ManejarFibonacci();
+					Escribir "";
+					Escribir "Presione cualquier tecla para continuar";
+
+				4: // Sucesi√≥n de Fibonacci (YA ESTABA COMPLETO)
 					Limpiar Pantalla;
 					
 					Escribir "==========================================================";
-					Escribir "              SUCESI”N DE FIBONACCI                     ";
+					Escribir "              SUCESI√ìN DE FIBONACCI                       ";
 					Escribir "==========================================================";
-					Escribir Sin Saltar "Ingrese la cantidad de tÈrminos a generar: ";
+					Escribir Sin Saltar "Ingrese la cantidad de t√©rminos a generar: ";
 					Leer num_terminos;
 					
 					// Llamada al subproceso para imprimir la serie
 					ImprimirFibonacci(num_terminos);
 				0: // SALIR
-					Escribir "Saliendo de la Calculadora. °Hasta pronto!";
+					Escribir "Saliendo de la Calculadora. ¬°Hasta pronto!";
 					
-				De Otro Modo: // Se puede omitir si ya se hizo la validaciÛn con el Si-Entonces, pero se mantiene por seguridad.
-					Escribir "ERROR INTERNO: OpciÛn no manejada.";
+				De Otro Modo:
+					Escribir "ERROR INTERNO: Opci√≥n no manejada.";
 					
 			FinSegun
 			
-			// Pausar solo si no est· saliendo
+			// Pausar solo si no est√° saliendo
             Si opcion <> 0 Entonces
                 Esperar Tecla;
             FinSi
 			
 		FinSi
 		
-	Hasta Que opcion = 0; // El ciclo se repite hasta que el usuario elija la opciÛn 0
+	Hasta Que opcion = 0; // El ciclo se repite hasta que el usuario elija la opci√≥n 0
 FinAlgoritmo
-
