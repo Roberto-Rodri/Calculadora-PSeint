@@ -281,7 +281,7 @@ Algoritmo CalculadoraMultifuncional
 							
 							// Encabezado
 							Escribir "==========================================================";
-							Escribir "                         MODA                             ";
+							Escribir "                         MODA B)                          ";
 							Escribir "==========================================================";
 							
 							// Solicitar datos
