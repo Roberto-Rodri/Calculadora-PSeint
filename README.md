@@ -50,14 +50,10 @@ Pull Requests: Una vez que una funcionalidad está completa en su rama (feature/
 
 ## 3. 🎯 Propósito y Uso de los Módulos: ¿Para Qué lo Hicimos?
 
-Describa el valor y la justificación de cada módulo funcional.
-
-| Módulo | Justificación (Propósito) |
-| :--- | :--- |
-| **Operaciones Básicas** | *[Escribir el propósito, ej: Ofrecer las funciones aritméticas esenciales para cualquier necesidad de cálculo.]* |
-| **Módulo Geometría** | *[Escribir el propósito, ej: Permitir cálculos rápidos y precisos de dimensiones geométricas, apoyando tareas de diseño o ingeniería.]* |
-| **Módulo Estadística** | *[Escribir el propósito, ej: Suministrar herramientas para el análisis descriptivo básico de conjuntos de datos numéricos.]* |
-| **Módulo Fibonacci** | *[Escribir el propósito, ej: Ejemplificar la implementación de una secuencia matemática recursiva y demostrar el manejo de series numéricas.]* |
+**Operaciones Básicas** Este módulo ofrece las funciones aritméticas esenciales (suma, resta, multiplicación y división), permitiendo resolver cálculos fundamentales que son necesarios en prácticamente cualquier actividad académica o técnica. Su propósito es brindar una herramienta rápida, accesible y confiable para operaciones numéricas cotidianas.
+**Módulo Geometría** Este módulo permite realizar cálculos geométricos comunes como áreas, perímetros y volúmenes. Su propósito es facilitar la resolución de problemas espaciales de manera precisa, apoyando actividades de diseño, ingeniería básica y trabajos escolares que requieren manejo de fórmulas geométricas.
+| **Módulo Estadística** Este módulo proporciona herramientas para el análisis descriptivo básico de datos numéricos, como promedio, mediana, moda y rangos. Su propósito es permitir al usuario interpretar conjuntos de datos de manera rápida, ayudando en tareas de investigación, proyectos escolares y análisis simples.
+| **Módulo Fibonacci** Este módulo ejemplifica la implementación de una secuencia matemática clásica. Su propósito es mostrar el manejo de ciclos, validación de datos, lógica numérica progresiva y la comprensión del crecimiento de series. También ayuda a reforzar conceptos de programación estructurada.
 
 ---
 
@@ -86,7 +82,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 | Jimenez Rodriguez Roberto Carlos| *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
 | Olguin Cano Julian Eduardo | *[Indicar: Geometría (Completa)]* |
 | Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
-| Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
+| Avila Martinez Thelma Getzemani | *[Indicar: Sucesión de Fibonacci]* |
  
 ---
 

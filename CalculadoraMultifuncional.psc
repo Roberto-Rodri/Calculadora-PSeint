@@ -67,6 +67,40 @@ FinSubProceso
 // ------------------------------------------------------------------------------
 // 1.4 MÓDULO: SUCESIÓN DE FIBONACCI
 // ------------------------------------------------------------------------------
+SubProceso ImprimirFibonacci(num_terminos)
+	// Esta función genera e imprime la serie de Fibonacci hasta 'num_terminos'
+	
+	Definir a, b, c, i Como Entero;
+	
+	Escribir "Sucesión de Fibonacci:";
+	
+	// Estructura Si...Sino Si...Sino para manejar los casos
+	Si num_terminos <= 0 Entonces
+		Escribir "La cantidad de términos debe ser un número positivo.";
+	FinSi
+	
+	 Si num_terminos = 1 Entonces
+			Escribir 0;
+			
+		Sino // num_terminos >= 2
+			a <- 0;
+			b <- 1;
+			
+			// Imprimir los primeros dos términos
+			Escribir Sin Saltar a, " ", b;
+			
+			// Calcular e imprimir términos restantes
+			Para i <- 3 Hasta num_terminos Con Paso 1 Hacer
+				c <- a + b;
+				Escribir Sin Saltar " ", c;
+				a <- b; // Actualizar 'a'
+				b <- c; // Actualizar 'b'
+			FinPara
+			
+			Escribir ""; // Salto de línea al final
+			
+		FinSi
+FinSubProceso
 SubProceso GenerarFibonacci(inicial, cantidadTerminos)
 	// Comentario: Lógica para generar 'cantidadTerminos' de la sucesión de Fibonacci,
 	//  asegurando que los números generados sigan la secuencia correcta a partir del 'inicial'.
@@ -350,8 +384,16 @@ Algoritmo CalculadoraMultifuncional
 				4: // Sucesión de Fibonacci
 					// Comentario: Llamar al subproceso encargado de generar la sucesión.
 					// SubProceso ManejarFibonacci();
-					Escribir "Ha seleccionado Sucesión de Fibonacci. (PENDIENTE DE IMPLEMENTAR). De ENTER para continuar";
+					Limpiar Pantalla;
 					
+					Escribir "==========================================================";
+					Escribir "              SUCESIÓN DE FIBONACCI                     ";
+					Escribir "==========================================================";
+					Escribir Sin Saltar "Ingrese la cantidad de términos a generar: ";
+					Leer num_terminos;
+					
+					// Llamada al subproceso para imprimir la serie
+					ImprimirFibonacci(num_terminos);
 				0: // SALIR
 					Escribir "Saliendo de la Calculadora. ¡Hasta pronto!";
 					
