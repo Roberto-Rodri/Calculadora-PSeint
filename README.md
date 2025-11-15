@@ -67,15 +67,15 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 
 ### Dificultades Técnicas
 
-* **[Dificultad #1]:** Describa un problema técnico específico (ej. la implementación de la Mediana sin una función de ordenamiento nativa).
-    * **Solución:** Describa la solución (ej. Implementación de un algoritmo de ordenamiento de burbuja manual).
-* **[Dificultad #2]:** Describa otro desafío técnico (ej. La validación rigurosa de entradas numéricas).
-    * **Solución:** Describa la solución.
+* **[Dificultad #1]:** Estadística básica (media, mediana y moda). El principal reto fue el manejo y ordenamiento de colecciones de datos. Por ejemplo, la mediana, requiere que la lista de números ingresados sea ordenada primero y despues aplicar formulas diferentes si la cantidad de números fue par o impar.
+    * **Solución:** Implementación de arreglos, definir un arreglo para almacenar los números ingresados por el usuario. Usar un algortimo de ordenamiento simple manualmente, como el método burbuja o selección para ordenar el arreglo. 
+* **[Dificultad #2]:** Sucesión de Fibonacci con un número inicial. La parte más compleja fue generar únicamente los números que pertenezcan a la sucesión de Fibonacci a partir de ese número inicial. Si el número incial no es un número de Fibonacci (ejemplo el 6), la funcipon debe identificar ese error. 
+    * **Solución:** Usar un bucle Mientras adicional antes de un bucle de generación para alcanzar el número inicial sin imprimir.  
 
 ### Dificultades de Colaboración
 
-* **[Dificultad #3]:** Describa un desafío de coordinación o Git (ej. Conflictos al fusionar el archivo `.psc`).
-    * **Solución:** Describa la solución (ej. Establecer reglas claras de *branching* y PRs).
+* **[Dificultad #3]:** Uso de programas como Github, Visual Studio y Warp. No todos los integrantes del equipo habían trabajado anteriormente con alguno de los programas mencionados, o incluso con ninguno de los tres, lo que hizo un poco más tardado y complejo el proceso.
+    * **Solución:** Se nos explicó detallada y brevemente la manera en la que se debía trabajar en cada programa, además de que se estuvo al pendiente en todo momento para resolver dudas. 
 
 ---
 
