@@ -270,7 +270,7 @@ Algoritmo CalculadoraMultifuncional
 							media = suma / total;
 							
 							// Imprimir el resultado
-							Escribir  " La media es :", media;
+							Escribir  " La media es :", media; 
 							
 						2: // Moda
 							
