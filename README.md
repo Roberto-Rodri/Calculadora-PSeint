@@ -50,12 +50,8 @@ Pull Requests: Una vez que una funcionalidad está completa en su rama (feature/
 
 ## 3. 🎯 Propósito y Uso de los Módulos: ¿Para Qué lo Hicimos?
 
-Describa el valor y la justificación de cada módulo funcional.
-
-| Módulo | Justificación (Propósito) |
-| :--- | :--- |
-| **Operaciones Básicas** | *[Escribir el propósito, ej: Ofrecer las funciones aritméticas esenciales para cualquier necesidad de cálculo.]* |
-| **Módulo Geometría** | *[Escribir el propósito, ej: Permitir cálculos rápidos y precisos de dimensiones geométricas, apoyando tareas de diseño o ingeniería.]* |
+**Operaciones Básicas** Este módulo ofrece las funciones aritméticas esenciales (suma, resta, multiplicación y división), permitiendo resolver cálculos fundamentales que son necesarios en prácticamente cualquier actividad académica o técnica. Su propósito es brindar una herramienta rápida, accesible y confiable para operaciones numéricas cotidianas.
+**Módulo Geometría** 
 | **Módulo Estadística** | *[Escribir el propósito, ej: Suministrar herramientas para el análisis descriptivo básico de conjuntos de datos numéricos.]* |
 | **Módulo Fibonacci** | *[Escribir el propósito, ej: Ejemplificar la implementación de una secuencia matemática recursiva y demostrar el manejo de series numéricas.]* |
 
@@ -86,7 +82,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 | Estudiante 1 | *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
 | Estudiante 2 | *[Indicar: Geometría (Completa)]* |
 | Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
-| Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
+| Avila Martinez Thelma Gerzemani | *[Indicar: Sucesión de Fibonacci]* |
  
 ---
 
