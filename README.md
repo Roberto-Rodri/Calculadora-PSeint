@@ -75,7 +75,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 ### Dificultades de Colaboración
 
 * **[Dificultad #3]:** Uso de programas como Github, Visual Studio y Warp. No todos los integrantes del equipo habían trabajado anteriormente con alguno de los programas mencionados, o incluso con ninguno de los tres, lo que hizo un poco más tardado y complejo el proceso.
-    * **Solución:** Se nos explicó detallada y brevemente la manera en la que se debía trabajar en cada programa, además de que se estuvo al pendiente en todo momento para resolver dudas. 
+    * **Solución:** Se nos explicó detallada y brevemente la manera en la que se debía trabajar en cada programa, además de que se estuvo al pendiente en todo momento para resolver dudas.  
 
 ---
 
@@ -83,11 +83,11 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 
 | Nombre del Estudiante | Módulo Principal Asignado |
 | :--- | :--- |
-| Jimenez Rodriguez Roberto Carlos | *Operaciones Básicas* |
-| Olguin Cano Julian Eduardo | *calculo de areas,Geometría* |
-| Estudiante 3 | *[Indicar: Estadística Básica]* |
+| Estudiante 1 | *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
+| Estudiante 2 | *[Indicar: Geometría (Completa)]* |
+| Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
-
+ 
 ---
 
  
