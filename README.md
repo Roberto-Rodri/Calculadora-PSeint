@@ -55,8 +55,8 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 
 ### Dificultades Técnicas
 
-* **[Dificultad #1]:** Describa un problema técnico específico (ej. la implementación de la Mediana sin una función de ordenamiento nativa).
-    * **Solución:** Describa la solución (ej. Implementación de un algoritmo de ordenamiento de burbuja manual).
+* **[Dificultad #1]:** Estadística básica (media, mediana y moda). El principal reto fue el manejo y ordenamiento de colecciones de datos. Por ejemplo, la mediana, requiere que la lista de números ingresados sea ordenada primero y despues aplicar formulas diferentes si la cantidad de números fue par o impar.
+    * **Solución:** Implementación de arreglos, definir un arreglo para almacenar los números ingresados por el usuario. Usar un algortimo de ordenamiento simple manualmente, como el método burbuja o selección para ordenar el arreglo. 
 * **[Dificultad #2]:** Describa otro desafío técnico (ej. La validación rigurosa de entradas numéricas).
     * **Solución:** Describa la solución.
 
