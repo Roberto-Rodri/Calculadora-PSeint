@@ -51,9 +51,12 @@ Pull Requests: Una vez que una funcionalidad está completa en su rama (feature/
 ## 3. 🎯 Propósito y Uso de los Módulos: ¿Para Qué lo Hicimos?
 
 **Operaciones Básicas** Este módulo ofrece las funciones aritméticas esenciales (suma, resta, multiplicación y división), permitiendo resolver cálculos fundamentales que son necesarios en prácticamente cualquier actividad académica o técnica. Su propósito es brindar una herramienta rápida, accesible y confiable para operaciones numéricas cotidianas.
+
 **Módulo Geometría** Este módulo permite realizar cálculos geométricos comunes como áreas, perímetros y volúmenes. Su propósito es facilitar la resolución de problemas espaciales de manera precisa, apoyando actividades de diseño, ingeniería básica y trabajos escolares que requieren manejo de fórmulas geométricas.
-| **Módulo Estadística** Este módulo proporciona herramientas para el análisis descriptivo básico de datos numéricos, como promedio, mediana, moda y rangos. Su propósito es permitir al usuario interpretar conjuntos de datos de manera rápida, ayudando en tareas de investigación, proyectos escolares y análisis simples.
-| **Módulo Fibonacci** Este módulo ejemplifica la implementación de una secuencia matemática clásica. Su propósito es mostrar el manejo de ciclos, validación de datos, lógica numérica progresiva y la comprensión del crecimiento de series. También ayuda a reforzar conceptos de programación estructurada.
+
+**Módulo Estadística** Este módulo proporciona herramientas para el análisis descriptivo básico de datos numéricos, como promedio, mediana, moda y rangos. Su propósito es permitir al usuario interpretar conjuntos de datos de manera rápida, ayudando en tareas de investigación, proyectos escolares y análisis simples.
+
+**Módulo Fibonacci** Este módulo ejemplifica la implementación de una secuencia matemática clásica. Su propósito es mostrar el manejo de ciclos, validación de datos, lógica numérica progresiva y la comprensión del crecimiento de series. También ayuda a reforzar conceptos de programación estructurada.
 
 ---
 
