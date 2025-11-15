@@ -75,7 +75,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 | Estudiante 2 | *[Indicar: Geometría (Completa)]* |
 | Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
-
+ 
 ---
 
  
