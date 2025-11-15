@@ -71,7 +71,7 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 
 | Nombre del Estudiante | Módulo Principal Asignado |
 | :--- | :--- |
-| Estudiante 1 | *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
+| Jimenez Rodriguez Roberto Carlos | *Operaciones Básicas* |
 | Estudiante 2 | *[Indicar: Geometría (Completa)]* |
 | Estudiante 3 | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
