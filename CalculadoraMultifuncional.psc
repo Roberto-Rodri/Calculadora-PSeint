@@ -338,7 +338,7 @@ Algoritmo CalculadoraMultifuncional
 							Escribir "                         MEDIANA                          ";
 							Escribir "==========================================================";
 							
-							// Solicitar datos
+							// Solicitar datosss
 							Escribir "Ingrese la cantidad de números en el conjunto:";
 							Leer n2;
 							
