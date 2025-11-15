@@ -57,11 +57,11 @@ SubProceso media <- CalcularMedia(serieNumeros)
 FinSubProceso
 
 SubProceso mediana <- CalcularMediana(serieNumeros)
-	// Comentario: Lógica para calcular la mediana (valor central) de un arreglo de números.
+	
 FinSubProceso
 
 SubProceso moda <- CalcularModa(serieNumeros)
-	// Comentario: Lógica para calcular la moda (valor más frecuente) de un arreglo de números.
+	moda <- a;
 FinSubProceso
 
 // ------------------------------------------------------------------------------
@@ -87,6 +87,8 @@ Algoritmo CalculadoraMultifuncional
 	Definir numero1, numero2 Como Real;
 	Definir total,x Como Entero;
 	Definir n,suma,media Como Real;
+	Definir num, i, j, contador, maxContador, moda Como Entero;
+	
 	
 	// Bucle principal de la calculadora
 	Repetir
@@ -273,6 +275,57 @@ Algoritmo CalculadoraMultifuncional
 							Escribir  " La media es :", media; 
 							
 						2: // Moda
+							Limpiar Pantalla; // Limpia la pantalla para un menú más limpio
+							
+							// Encabezado
+							Escribir "==========================================================";
+							Escribir "                         MODA                             ";
+							Escribir "==========================================================";
+							
+							// Solicitar datos
+							Escribir "Ingrese la cantidad de números en el conjunto:";
+							Leer num;
+							
+							// Definir el vector (arreglo) para almacenar los números
+							Dimension numeros[num];
+							
+							// Ingreso de los elementos del vector
+							Escribir "Ingrese los ", num, " números uno por uno:";
+							Para i <- 1 Hasta num Con Paso 1 Hacer
+								Escribir "Número ", i+1, ":";
+								Leer numeros[i];
+							FinPara
+							
+							// Inicialización de variables de la moda
+							maxContador <- 1;
+							moda <- numeros[1]; // Inicializamos la moda con el primer elemento
+							
+							// --- Cálculo de la Moda ---
+							Para i <- 1 Hasta num Con Paso 1 Hacer
+								// Contar cuántas veces se repite el número actual (numeros[i])
+								contador <- 1;
+								Para j <- 1 Hasta num Con Paso 1 Hacer
+									Si numeros[i] = numeros[j] Entonces
+										contador <- contador + 1;
+									FinSi
+								FinPara
+								// Si la cuenta actual es mayor al máximo contador, 
+								// actualizamos el máximo contador y la moda
+								Si contador > maxContador Entonces
+									maxContador <- contador;
+									moda <- numeros[i];
+								FinSi
+							FinPara
+							
+							// --- Mostrar el Resultado ---
+							Si maxContador = 1 Entonces
+								Escribir "Todos los números son únicos o se repiten la misma cantidad de veces. No hay una moda clara (o es amodal).";
+								Escribir "La frecuencia máxima encontrada es 1.";
+							Sino
+								Escribir "--- Resultado ---";
+								Escribir "La **Moda** del conjunto es: ", moda;
+								Escribir "Se repite ", maxContador, " veces.";
+							FinSi
 							
 						3: //Mediana
 							
