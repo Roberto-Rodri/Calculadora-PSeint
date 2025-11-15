@@ -88,6 +88,8 @@ Algoritmo CalculadoraMultifuncional
 	Definir total,x Como Entero;
 	Definir n,suma,media Como Real;
 	Definir num, i, j, contador, maxContador, moda Como Entero;
+	Definir n2, i2, j2, aux Como Entero;
+    Definir mediana Como Real;
 	
 	
 	// Bucle principal de la calculadora
@@ -329,7 +331,74 @@ Algoritmo CalculadoraMultifuncional
 							
 						3: //Mediana
 							
-							// Confirmacion del usuario para continuar y limpiar la pantalla
+							Limpiar Pantalla; // Limpia la pantalla para un menú más limpio
+							
+							// Encabezado
+							Escribir "==========================================================";
+							Escribir "                         MEDIANA                          ";
+							Escribir "==========================================================";
+							
+							// Solicitar datos
+							Escribir "Ingrese la cantidad de números en el conjunto:";
+							Leer n2;
+							
+							// Definir el vector (arreglo) para almacenar los números (índices 1 a n)
+							Dimension numeros[n2];
+							
+							// 2. Ingreso de los elementos del vector
+							Escribir "Ingrese los ", n2, " números uno por uno:";
+							Para i2 <- 1 Hasta n2 Con Paso 1 Hacer
+								Escribir "Número ", i2, ":";
+								Leer numeros[i2];
+							FinPara
+							
+							// 3. Ordenamiento del Vector (Método de la Burbuja)
+							Escribir "--- Ordenando el Conjunto ---";
+							Para i2 <- 1 Hasta n2-1 Con Paso 1 Hacer
+								Para j2 <- 1 Hasta n2-i2 Con Paso 1 Hacer
+									// Si el elemento actual es mayor que el siguiente, los intercambiamos
+									Si numeros[j2] > numeros[j2+1] Entonces
+										aux <- numeros[j2];
+										numeros[j2] <- numeros[j2+1];
+										numeros[j2+1] <- aux;
+									FinSi
+								FinPara
+							FinPara
+							
+							// 4. Mostrar el Vector Ordenado (Opcional, pero útil)
+							Escribir "Conjunto Ordenado:";
+							Escribir Sin Saltar "[";
+							Para i2 <- 1 Hasta n2 Con Paso 1 Hacer
+								Escribir Sin Saltar numeros[i2];
+								Si i2 < n Entonces
+									Escribir Sin Saltar ", ";
+								FinSi
+							FinPara
+							Escribir "]";
+							
+							// 5. Cálculo de la Mediana
+							Si n2 MOD 2 <> 0 Entonces
+								// CASO 1: n es impar
+								// La mediana es el elemento en la posición central
+								// Posición central: (n + 1) / 2
+								mediana <- numeros[(n2 + 1) / 2];
+								Escribir "El conjunto tiene un número impar de elementos (n=", n2, ").";
+								Escribir "El valor central está en la posición: ", (n2 + 1) / 2;
+							Sino
+								// CASO 2: n es par
+								// La mediana es el promedio de los dos elementos centrales
+								// Posiciones centrales: n / 2  y  (n / 2) + 1
+								i2 <- n2 / 2; // Índice del primer valor central
+								j2 <- (n2 / 2) + 1; // Índice del segundo valor central
+								mediana <- (numeros[i2] + numeros[j2]) / 2;
+								Escribir "El conjunto tiene un número par de elementos (n=", n2, ").";
+								Escribir "Los valores centrales están en las posiciones: ", i2, " y ", j2;
+							FinSi
+							
+							// 6. Mostrar el Resultado
+							Escribir "--- Resultado ---";
+							Escribir "La **Mediana** del conjunto es: ", mediana;
+							
 							Escribir "";
 							Escribir "Presione cualquier tecla para continuar";
 						De Otro Modo:
