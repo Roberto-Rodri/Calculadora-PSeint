@@ -71,8 +71,8 @@ Esta sección es crucial para el entregable. Documente los problemas técnicos o
 
 | Nombre del Estudiante | Módulo Principal Asignado |
 | :--- | :--- |
-| Estudiante 1 | *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
-| Estudiante 2 | *[Indicar: Geometría (Completa)]* |
+| Jimenez Rodriguez Roberto Carlos| *[Indicar: Operaciones Básicas y Geometría (Parcial)]* |
+| Olguin Cano Julian Eduardo | *[Indicar: Geometría (Completa)]* |
 | Coronel Olvera Frida Sofia | *[Indicar: Estadística Básica]* |
 | Estudiante 4 | *[Indicar: Sucesión de Fibonacci]* |
  
