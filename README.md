@@ -21,18 +21,30 @@ En esta sección, se explica la estructura interna del código (`.psc`) y las t�
 
 ### 2.1. Estructura Modular
 
-* **Proceso Principal:** Descripción de cómo el `Proceso CalculadoraMultifuncional` gestiona el menú y las llamadas a las funciones. 
-* **Subprocesos:** Breve explicación de la división del código en módulos (Subprocesos) para cada funcionalidad.
+* **Proceso Principal:** La lógica central reside en Proceso CalculadoraMultifuncional. Este actúa como el "controlador" principal de la aplicación. Utiliza un bucle Repetir...Hasta Que para mantener el programa en ejecución hasta que el usuario elija la opción "0" (Salir). Dentro del bucle, gestiona la navegación mostrando el menú principal, leyendo la opcion del usuario y utilizando una estructura Segun (equivalente a un switch) para dirigir el flujo del programa al módulo correspondiente.
+
+* **Subprocesos:** Para mantener el código limpio y organizado, adoptamos un enfoque modular. Cada funcionalidad específica se aísla en un SubProceso (función). Por ejemplo, en lugar de poner la lógica de la suma dentro del Segun principal, simplemente llamamos al subproceso Sumar(num1, num2). Esta "separación de responsabilidades" hace que el Proceso Principal sea fácil de leer (solo se encarga de menús y llamadas) y que los subprocesos sean fáciles de mantener (cada uno hace una sola cosa, como CalcularAreaCirculo o Restar).
 
 ### 2.2. Robustez y Validación de Entradas
 
-* Explicar la implementación del manejo de excepciones (ej., **división por cero**) y la validación de que el usuario ingrese el tipo de dato correcto en cada módulo.
+En nuestro código, la robustez se maneja en dos niveles:
+
+Validación de Opciones de Menú: Implementamos una validación explícita después de leer la opcion del menú principal. Usando una estructura Si opcion < 0 O opcion > 4 Entonces..., nos aseguramos de que el usuario solo pueda ingresar números dentro del rango permitido. Si ingresa una opción inválida, se muestra un mensaje de error y el bucle Repetir vuelve a mostrar el menú, previniendo que el programa intente ejecutar un caso inexistente en la estructura Segun.
+
+Manejo de Excepciones (Puntos de Mejora):
+
+División por Cero: Actualmente, nuestro subproceso Dividir(num1, num2) ejecuta num1 / num2 directamente. Si el usuario ingresa 0 como num2, PSeInt detendrá el programa con un error. Una mejora pendiente clave es añadir una validación dentro de ese subproceso (ej. Si num2 = 0 Entonces Escribir "Error: No se puede dividir por cero" Sino ...).
+
+Validación de Tipo de Dato: Confiamos en el intérprete de PSeInt para el manejo de tipos. Cuando usamos Leer numero1 (definido como Real), si el usuario ingresa texto (ej. "hola"), PSeInt automáticamente detiene la ejecución y reporta el error. No implementamos un bucle de validación manual para este caso, asumiendo que el manejo de errores del entorno es suficiente para este proyecto.
 
 ### 2.3. Control de Versiones y Colaboración
 
-* **Estrategia de Branching:** Explicar el uso de ramas (`feature/nombre_modulo`) para el trabajo en equipo.
-* **Commits y PRs:** Describir la convención de los commits (`[FEAT], [FIX], [DOCS]`) y el uso de Pull Requests para la revisión de código.
-* **[Aquí se adjuntará el enlace al historial de Commits en GitHub]**
+* **Estrategia de Branching:** Utilizamos un modelo de ramificación basado en funcionalidades (Git Flow simplificado). La rama main (o master) se mantiene como la versión estable y funcional del proyecto. Ningún desarrollador trabaja directamente sobre main. Para añadir una nueva funcionalidad (como el módulo de geometría o estadística), se crea una nueva rama descriptiva a partir de main, siguiendo la convención feature/nombre_modulo (ej. feature/geometria, feature/estadistica).
+
+* **Commits y PRs:** Commits: Todo el trabajo se guarda en la rama feature usando commits atómicos y descriptivos. Seguimos una convención para los mensajes de commit, como [FEAT] para nuevas funcionalidades (ej. [FEAT] Agrega subproceso CalcularAreaTriangulo), [FIX] para corrección de errores (ej. [FIX] Corrige validación en menú de geometría) o [DOCS] para documentación.
+
+Pull Requests: Una vez que una funcionalidad está completa en su rama (feature/geometria), no se fusiona (merge) directamente a main. En su lugar, se abre un Pull Request (PR) en GitHub. Este PR actúa como una solicitud de revisión: los otros miembros del equipo pueden revisar el código, dejar comentarios y asegurarse de que no introduce errores. Solo después de que el PR es aprobado por el equipo, el código se fusiona a main, garantizando la calidad y la integridad de la rama principal.
+
 
 ---
 
